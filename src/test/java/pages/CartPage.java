@@ -5,6 +5,7 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import helpers.PriceHelper;
 import io.qameta.allure.Step;
+import lombok.extern.java.Log;
 import org.assertj.core.api.Assertions;
 
 import static com.codeborne.selenide.Selenide.*;
@@ -18,6 +19,7 @@ import java.util.stream.Collectors;
 
 import static com.codeborne.selenide.Condition.visible;
 
+@Log
 public class CartPage {
 
     private static final String HISTORY_PAGE = "https://www.rdveikals.lv/cart/lv/";
@@ -29,6 +31,7 @@ public class CartPage {
 
     @Step("Open Cart page")
     public CartPage open() {
+        log.info("Cart page opening");
         Selenide.open(HISTORY_PAGE);
         LOGO.shouldBe(visible);
         return this;
@@ -56,24 +59,22 @@ public class CartPage {
         BigInteger sumOfAllProducts = calculateSumOfAllProducts();
 
         assertThat(sumOfAllProducts)
-                .withFailMessage("\n Total sum mismatch:" +
+                .withFailMessage("Total sum mismatch:" +
                         "\n Actual result:   " + sumOfAllProducts +
                         "\n Expected result: " + totalSum)
                 .isEqualTo(totalSum);
     }
 
-    @Step("Assert that Total sum and sum of all products in Cart page are the same")
+    @Step("Assert that Cart product count is correct")
     public CartPage assertCartProductsCountIsCorrect(int expectedProductCount) {
         Assertions.assertThat(expectedProductCount)
-                .withFailMessage("\n Cart product count mismatch:" +
+                .withFailMessage("Cart product count mismatch:" +
                         "\n Actual result:   " + CART_PRODUCT_LIST.size() +
                         "\n Expected result: " + expectedProductCount)
                 .isEqualTo(CART_PRODUCT_LIST.size());
-        //CART_PRODUCT_LIST.shouldHaveSize(expectedProductCount);
         return this;
     }
 
-    @Step("Removing random product")
     private CartPage removeOneRandomProduct() {
         REMOVE_PRODUCT_BUTTON
                 .get(getRandomProductFromCart())
@@ -82,10 +83,11 @@ public class CartPage {
         return this;
     }
 
-    @Step("Remove {{}} random product(s)")
+    @Step("Remove random product(s)")
     public CartPage removeFewRandomProducts(int productAmount) {
         if (productAmount > 0) {
             for (int i = 1; i <= productAmount; i++) {
+                log.info("Removing random product");
                 removeOneRandomProduct();
                 sleep(3000); //Website removing products with delay
             }

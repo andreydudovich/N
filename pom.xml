@@ -20,6 +20,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <assertJ.version>3.15.0</assertJ.version>
     <allure-maven.version>2.10.0</allure-maven.version>
+    <lombok.version>1.18.12</lombok.version>
   </properties>
 
   <dependencies>
@@ -49,6 +50,15 @@
       <scope>test</scope>
     </dependency>
 
+    <!-- Lombok -->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>${lombok.version}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <!-- Selenide -->
     <dependency>
       <groupId>com.codeborne</groupId>
       <artifactId>selenide</artifactId>
@@ -60,6 +70,12 @@
       <artifactId>allure-junit5</artifactId>
       <version>2.13.1</version>
       <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>io.qameta.allure</groupId>
+      <artifactId>allure-selenide</artifactId>
+      <version>2.13.2</version>
     </dependency>
 
     <!--Assertions -->

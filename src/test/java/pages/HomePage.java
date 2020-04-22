@@ -5,6 +5,7 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 
 import io.qameta.allure.Step;
+import lombok.extern.java.Log;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,8 +16,8 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 import static java.lang.Math.abs;
 
+@Log
 public class HomePage {
-    private static final Logger LOG = LoggerFactory.getLogger(HomePage.class);
     private static final String RD_MAIN_PAGE = "https://www.rdveikals.lv";
     private static final SelenideElement LOGO = $(".btn--link");
     private static final SelenideElement ADD_TO_CART_BTN = $(".btn--280");
@@ -24,6 +25,7 @@ public class HomePage {
 
     @Step("Open Home page")
     public HomePage open() {
+        log.info("Home page opening");
         Selenide.open(RD_MAIN_PAGE);
         LOGO.shouldBe(visible);
         return this;
@@ -38,7 +40,6 @@ public class HomePage {
         return this;
     }
 
-    @Step("Clicking on random product")
     private HomePage clickOneRandomProduct(int number) {
         openLaptopCategory();
         PRODUCTS.get(abs(getRandomProduct() - number))
@@ -46,10 +47,11 @@ public class HomePage {
         return this;
     }
 
-    @Step("Click on {{}} random product(s)")
+    @Step("Click on random product(s)")
     public HomePage clickRandomProducts(int productAmount) {
         if (productAmount > 0) {
             for (int i = 1; i <= productAmount; i++) {
+                log.info("Clicking on random product");
                 clickOneRandomProduct(productAmount);
             }
         } else {
@@ -58,7 +60,6 @@ public class HomePage {
         return this;
     }
 
-    @Step("Adding random product to Cart")
     private HomePage addToCartOneRandomProduct(int number) {
         openLaptopCategory().
                 clickOneRandomProduct(number);
@@ -66,10 +67,11 @@ public class HomePage {
         return this;
     }
 
-    @Step("Add to Cart {{}} random product(s)")
+    @Step("Add to Cart random product(s)")
     public HomePage addToCartRandomProducts(int productAmount) {
         if (productAmount > 0) {
             for (int i = 1; i <= productAmount; i++) {
+                log.info("Adding to cart random product");
                 addToCartOneRandomProduct(productAmount);
             }
         } else {
