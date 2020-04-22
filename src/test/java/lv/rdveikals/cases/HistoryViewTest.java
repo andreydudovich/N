@@ -6,21 +6,12 @@ import lombok.extern.java.Log;
 import lv.rdveikals.pages.HistoryPage;
 import lv.rdveikals.pages.HomePage;
 import lv.rdveikals.utils.TestResultLoggerExtension;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-
-import static com.codeborne.selenide.Selenide.closeWindow;
 
 @Log
 @ExtendWith(TestResultLoggerExtension.class)
 public class HistoryViewTest {
-    @AfterEach
-    public void closeBrowser() {
-        log.info("Closing browser");
-        closeWindow();
-    }
-
     @Test
     @Story("Count of few random products in History page")
     @Description("Task 1\n" +
