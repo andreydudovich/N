@@ -1,9 +1,9 @@
-package pages;
+package lv.rdveikals.pages;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
-import helpers.PriceHelper;
+import lv.rdveikals.helpers.PriceHelper;
 import io.qameta.allure.Step;
 import lombok.extern.java.Log;
 import org.assertj.core.api.Assertions;

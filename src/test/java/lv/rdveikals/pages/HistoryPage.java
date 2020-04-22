@@ -1,4 +1,4 @@
-package pages;
+package lv.rdveikals.pages;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;

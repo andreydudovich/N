@@ -1,4 +1,4 @@
-package utils;
+package lv.rdveikals.utils;
 
 import java.util.ArrayList;
 import java.util.List;

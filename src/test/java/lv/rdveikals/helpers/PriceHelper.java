@@ -1,4 +1,4 @@
-package helpers;
+package lv.rdveikals.helpers;
 
 import com.google.common.base.CharMatcher;
 import lombok.extern.java.Log;
