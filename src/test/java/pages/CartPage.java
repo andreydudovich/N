@@ -39,6 +39,7 @@ public class CartPage {
 
     @Step("Get list of prices in Cart page")
     public List<String> getAllPrices() {
+        log.info("Getting prices of products");
         return PRICES_OF_PRODUCT
                 .stream()
                 .map(SelenideElement::getText)
@@ -46,7 +47,8 @@ public class CartPage {
     }
 
     @Step("Calculate sum of all products in Cart page")
-    public BigInteger calculateSumOfAllProducts() {
+    public BigInteger calculateSumOfAllProductsInCart() {
+        log.info("Calculating sum of all products in Cart page");
         return new PriceHelper()
                 .extractIntegers(getAllPrices())
                 .stream()
@@ -56,7 +58,7 @@ public class CartPage {
     @Step("Assert that Total sum and sum of all products in Cart page are the same")
     public void assertTotalSumIsCorrect() {
         BigInteger totalSum = new PriceHelper().stringToBigInt(TOTAL_SUM.getText());
-        BigInteger sumOfAllProducts = calculateSumOfAllProducts();
+        BigInteger sumOfAllProducts = calculateSumOfAllProductsInCart();
 
         assertThat(sumOfAllProducts)
                 .withFailMessage("Total sum mismatch:" +

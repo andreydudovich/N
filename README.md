@@ -11,6 +11,9 @@ mvn test
 #### Run tests and open allure report 
 mvn clean test; mvn allure:serve
 
+#### Run tests in background and open allure report 
+mvn clean test -Dselenide.headless=true; mvn allure:serve
+
 #### Run a single test method from a test class.
 mvn -Dtest=TestApp1#methodname test   
 Example: mvn -Dtest=RDWebPageTest#historyProductTest test

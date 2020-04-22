@@ -41,6 +41,7 @@ public class HomePage {
     private HomePage clickOneRandomProduct(int number) {
         openLaptopCategory();
         PRODUCTS.get(abs(getRandomProduct() - number))
+                .scrollIntoView("{block: \"center\"}")
                 .shouldBe(visible).click();
         return this;
     }
@@ -59,8 +60,7 @@ public class HomePage {
     }
 
     private HomePage addToCartOneRandomProduct(int number) {
-        openLaptopCategory().
-                clickOneRandomProduct(number);
+        clickOneRandomProduct(number);
         ADD_TO_CART_BTN.scrollIntoView("{block: \"center\"}").click();
         return this;
     }

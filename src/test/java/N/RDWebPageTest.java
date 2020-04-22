@@ -1,7 +1,5 @@
 package N;
 
-import com.codeborne.selenide.junit5.ScreenShooterExtension;
-
 import io.qameta.allure.Description;
 import io.qameta.allure.Story;
 import lombok.extern.java.Log;
@@ -11,14 +9,16 @@ import pages.CartPage;
 import pages.HistoryPage;
 import pages.HomePage;
 import org.junit.jupiter.api.Test;
+import utils.TestResultLoggerExtension;
 
 import static com.codeborne.selenide.Selenide.closeWindow;
 
 @Log
-@ExtendWith({ScreenShooterExtension.class})
+@ExtendWith(TestResultLoggerExtension.class)
 public class RDWebPageTest {
     @AfterEach
     public void closeBrowser() {
+        log.info("Closing browser");
         closeWindow();
     }
 
