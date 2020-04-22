@@ -18,7 +18,7 @@ import static com.codeborne.selenide.Selenide.closeWindow;
 @ExtendWith({ScreenShooterExtension.class})
 public class RDWebPageTest {
     @AfterEach
-    public void closeBrowser(){
+    public void closeBrowser() {
         closeWindow();
     }
 

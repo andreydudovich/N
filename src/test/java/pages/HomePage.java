@@ -6,8 +6,6 @@ import com.codeborne.selenide.SelenideElement;
 
 import io.qameta.allure.Step;
 import lombok.extern.java.Log;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.security.InvalidParameterException;
 import java.util.Random;
@@ -34,7 +32,7 @@ public class HomePage {
     @Step("Open Laptop category")
     public HomePage openLaptopCategory() {
         String LAPTOP_CATEGORY_RANDOM_FROM_40_PAGES = "/categories/ru/150/sort/1/filter/0_0_0_0" +
-                "/page/" + (new Random().nextInt(40) + 1)  + "/Datortehnika.html";
+                "/page/" + (new Random().nextInt(40) + 1) + "/Datortehnika.html";
         Selenide.open(RD_MAIN_PAGE + LAPTOP_CATEGORY_RANDOM_FROM_40_PAGES);
         LOGO.shouldBe(visible);
         return this;

@@ -1,7 +1,7 @@
 # RD Electronics Webpage testing
 
 ## Technologies & tools
-Java 11, Allure, Junit 5, Maven, Selenide
+Java 11, Allure, Junit 5, Maven, Selenide, Lombok
 
 ## Run options
 
