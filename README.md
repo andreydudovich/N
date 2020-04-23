@@ -16,7 +16,7 @@ mvn clean test -Dselenide.headless=true; mvn allure:serve
 
 #### Run a single test method from a test class.
 mvn -Dtest=TestApp1#methodName test   
-Example: mvn -Dtest=RDWebPageTest#historyProductTest test
+Example: mvn -Dtest=HistoryViewTest#historyProductTest test
 
 #### Run a single test class.
 mvn -Dtest=HistoryViewTest test
